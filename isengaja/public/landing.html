@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stel Link - Shorten Your Link Instantly</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            stel_bg: '#18192b',
+            stel_panel: '#23244a',
+            stel_accent: '#7aa2f7',
+            stel_accent2: '#bb9af7',
+            stel_text: '#c0caf5',
+            stel_error: '#f7768e',
+            stel_success: '#9ece6a',
+            stel_glass: 'rgba(36,40,59,0.7)',
+            stel_glass2: 'rgba(122,162,247,0.12)',
+          },
+          boxShadow: {
+            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+          },
+          backgroundImage: {
+            'stel-gradient': 'linear-gradient(135deg, #18192b 0%, #23244a 60%, #7aa2f7 100%)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #18192b 0%, #23244a 60%, #7aa2f7 100%) !important;
+      min-height: 100vh;
+    }
+    .stel-blob {
+      position: absolute;
+      filter: blur(60px);
+      opacity: 0.5;
+      z-index: 0;
+      animation: blobMove 18s ease-in-out infinite alternate;
+    }
+    @keyframes blobMove {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-40px) scale(1.1); }
+      100% { transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-stel_bg relative" style="overflow-x:hidden; font-family: 'Inter', sans-serif;">
+  <!-- Animated Blobs -->
+  <div class="stel-blob" style="top:-120px;left:-80px;width:400px;height:400px;background:#7aa2f7;"></div>
+  <div class="stel-blob" style="bottom:-100px;right:-60px;width:350px;height:350px;background:#bb9af7;"></div>
+  <!-- Top Bar -->
+  <nav class="w-full flex items-center justify-between px-4 md:px-10 py-3 bg-stel_panel/80 shadow-lg sticky top-0 z-20 backdrop-blur-md border-b border-white/10" style="overflow-x:hidden;">
+    <span class="text-xl md:text-2xl font-black text-stel_accent tracking-tight select-none whitespace-nowrap" style="letter-spacing:-0.5px;">stel<span class="text-stel_accent2">.link</span></span>
+    <a href="auth.html" class="text-stel_text hover:text-stel_accent2 font-semibold text-sm md:text-base px-4 py-2 rounded transition">Login / Sign Up</a>
+  </nav>
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center min-h-[70vh] md:min-h-[80vh] pt-8 md:pt-0 relative z-10">
+    <div class="w-full max-w-lg bg-stel_glass2 rounded-2xl shadow-glass p-8 flex flex-col items-center backdrop-blur-md border border-white/10" style="box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37); background: rgba(36,40,59,0.7);">
+      <h1 class="text-3xl md:text-4xl font-extrabold text-stel_accent mb-4 text-center drop-shadow-lg tracking-tight">Shorten your link, instantly.</h1>
+      <p class="text-stel_text text-base md:text-lg mb-6 text-center">Buat link pendek yang mudah diingat dan bagikan ke siapa saja, kapan saja.</p>
+      <form id="shorten-form" class="flex flex-col gap-4 w-full">
+        <input type="url" id="original_url" class="rounded-lg px-4 py-3 bg-stel_bg/80 text-stel_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-stel_accent text-base shadow-inner" placeholder="Tempel URL asli di sini..." required>
+        <input type="text" id="alias" class="rounded-lg px-4 py-3 bg-stel_bg/80 text-stel_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-stel_accent2 text-base shadow-inner" placeholder="Alias custom (opsional)">
+        <button type="submit" class="bg-gradient-to-r from-stel_accent to-stel_accent2 hover:from-stel_accent2 hover:to-stel_accent text-white font-bold py-3 rounded-lg shadow-lg text-base transition-all duration-300">Shorten</button>
+      </form>
+      <div id="result" class="mt-6 text-center text-base"></div>
+    </div>
+  </section>
+  <!-- How It Works -->
+  <section class="w-full max-w-4xl mx-auto mt-20 mb-10 px-4 z-10">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-stel_glass2 rounded-2xl p-8 shadow-glass backdrop-blur-md border border-white/10 flex flex-col items-center">
+        <span class="text-4xl mb-3">🔗</span>
+        <h2 class="text-xl font-bold text-stel_accent mb-2">Paste Link</h2>
+        <p class="text-stel_text text-center">Tempel link panjang kamu di kolom yang tersedia.</p>
+      </div>
+      <div class="bg-stel_glass2 rounded-2xl p-8 shadow-glass backdrop-blur-md border border-white/10 flex flex-col items-center">
+        <span class="text-4xl mb-3">✨</span>
+        <h2 class="text-xl font-bold text-stel_accent mb-2">Custom Alias</h2>
+        <p class="text-stel_text text-center">Bisa langsung pakai atau tambahkan alias unik sesuai keinginan.</p>
+      </div>
+      <div class="bg-stel_glass2 rounded-2xl p-8 shadow-glass backdrop-blur-md border border-white/10 flex flex-col items-center">
+        <span class="text-4xl mb-3">🚀</span>
+        <h2 class="text-xl font-bold text-stel_accent mb-2">Dapatkan Link Pendek</h2>
+        <p class="text-stel_text text-center">Klik Shorten dan dapatkan link pendek siap pakai!</p>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="w-full bg-stel_panel/80 py-10 flex flex-col items-center backdrop-blur-md border-t border-white/10 z-10">
+    <h2 class="text-2xl text-stel_accent font-extrabold mb-2 tracking-tight">Stel Link</h2>
+    <p class="text-stel_text mb-4 text-lg">Solusi link pendek kekinian. Gratis, cepat, dan mudah!</p>
+    <a href="mailto:admin@stellink.com" class="bg-gradient-to-r from-stel_accent to-stel_accent2 hover:from-stel_accent2 hover:to-stel_accent text-white px-8 py-3 rounded-full font-bold shadow-lg text-lg transition-all duration-300">Hubungi Kami</a>
+  </footer>
+  <script>
+    const form = document.getElementById('shorten-form');
+    const resultDiv = document.getElementById('result');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      resultDiv.innerHTML = '';
+      const original_url = document.getElementById('original_url').value;
+      const alias = document.getElementById('alias').value;
+      try {
+        const res = await fetch('/shorten', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
+          },
+          body: JSON.stringify({ original_url, alias })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          resultDiv.innerHTML = `<div class='text-stel_success font-semibold'>Shortlink: <a href='${data.short_url}' class='underline text-stel_accent' target='_blank'>${data.short_url}</a></div>`;
+        } else {
+          resultDiv.innerHTML = `<div class='text-stel_error'>${data.message || 'Terjadi error.'}</div>`;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = `<div class='text-stel_error'>Gagal terhubung ke server.</div>`;
+      }
+    });
+  </script>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+</body>
+</html>

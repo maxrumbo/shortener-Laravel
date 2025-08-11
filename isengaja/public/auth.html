@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In / Sign Up - Tokyo Night Shortener</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tn_bg: '#161b2d',
+            tn_panel: '#22223c',
+            tn_accent: '#7aa2f7',
+            tn_accent2: '#bb9af7',
+            tn_text: '#c0caf5',
+            tn_error: '#f7768e',
+            tn_success: '#9ece6a',
+            tn_glass: 'rgba(36,40,59,0.7)',
+            tn_glass2: 'rgba(122,162,247,0.12)',
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #161b2d 0%, #23345c 100%);
+      overflow: hidden;
+    }
+    .blob-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob {
+      filter: blur(60px) brightness(1.2);
+      opacity: 0.7;
+      animation: moveblob 16s ease-in-out infinite alternate;
+    }
+    @keyframes moveblob {
+      0% { transform: translate(0,0) scale(1.1); }
+      50% { transform: translate(30vw, 10vh) scale(1.3); }
+      100% { transform: translate(10vw, 30vh) scale(1.05); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-tn_bg relative" style="overflow-x:hidden; font-family: 'Inter', sans-serif;">
+  <!-- Animated 3D Blob Background -->
+  <svg class="blob-bg" viewBox="0 0 800 600">
+    <defs>
+      <radialGradient id="blueblob" cx="50%" cy="50%" r="80%">
+        <stop offset="0%" stop-color="#7aa2f7" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#161b2d" stop-opacity="0.7"/>
+      </radialGradient>
+    </defs>
+    <ellipse class="blob" cx="400" cy="300" rx="340" ry="220" fill="url(#blueblob)"/>
+  </svg>
+  <div class="w-full max-w-xl bg-tn_glass2 rounded-3xl shadow-lg p-12 flex flex-col items-center z-10 backdrop-blur-md border border-white/10" style="box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37); background: rgba(36,40,59,0.7);">
+  <h1 class="text-2xl md:text-3xl font-extrabold text-tn_accent mb-6 text-center drop-shadow-lg tracking-tight animate-fade-in">Masuk ke stel.link</h1>
+    <div class="flex justify-center mb-6 gap-4 animate-fade-in">
+      <button id="show-signin" class="px-6 py-3 bg-gradient-to-r from-tn_accent to-tn_accent2 text-white font-bold rounded-full shadow-lg text-lg transition-all duration-300">Sign In</button>
+      <button id="show-signup" class="px-6 py-3 bg-gradient-to-r from-tn_accent2 to-tn_accent text-white font-bold rounded-full shadow-lg text-lg transition-all duration-300">Sign Up</button>
+    </div>
+    <form class="flex flex-col gap-5 w-full" id="auth-form">
+  <input type="email" class="rounded-lg px-4 py-3 bg-tn_bg/80 text-tn_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tn_accent text-base shadow-inner" placeholder="Email" required>
+  <input type="password" class="rounded-lg px-4 py-3 bg-tn_bg/80 text-tn_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tn_accent2 text-base shadow-inner" placeholder="Password" required>
+  <button type="submit" class="bg-gradient-to-r from-tn_accent to-tn_accent2 hover:from-tn_accent2 hover:to-tn_accent text-white font-bold py-3 rounded-lg shadow-lg text-base transition-all duration-300">Login / Sign Up</button>
+    </form>
+      <script>
+        document.getElementById('auth-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          window.location.href = 'landing.html';
+        });
+      </script>
+    <form id="signup-form" class="flex flex-col gap-5 w-full hidden animate-fade-in">
+      <input type="text" class="rounded-xl px-5 py-3 bg-tn_bg/80 text-tn_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tn_accent2 text-lg shadow-inner" placeholder="Name" required>
+      <input type="email" class="rounded-xl px-5 py-3 bg-tn_bg/80 text-tn_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tn_accent2 text-lg shadow-inner" placeholder="Email" required>
+      <input type="password" class="rounded-xl px-5 py-3 bg-tn_bg/80 text-tn_text placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-tn_accent2 text-lg shadow-inner" placeholder="Password" required>
+      <button type="submit" class="bg-gradient-to-r from-tn_accent2 to-tn_accent hover:from-tn_accent hover:to-tn_accent2 text-white font-bold py-3 rounded-xl shadow-lg text-lg transition-all duration-300">Sign Up</button>
+    </form>
+    <div id="auth-msg" class="mt-6 text-center text-lg"></div>
+    <style>
+      @keyframes fade-in { from { opacity: 0; transform: translateY(40px);} to { opacity: 1; transform: none; } }
+      .animate-fade-in { animation: fade-in 1s cubic-bezier(.4,0,.2,1) both; }
+    </style>
+  </div>
+  <script>
+    const signinForm = document.getElementById('signin-form');
+    const signupForm = document.getElementById('signup-form');
+    document.getElementById('show-signin').onclick = () => {
+      signinForm.classList.remove('hidden');
+      signupForm.classList.add('hidden');
+    };
+    document.getElementById('show-signup').onclick = () => {
+      signupForm.classList.remove('hidden');
+      signinForm.classList.add('hidden');
+    };
+    // Demo only: redirect to welcome page on submit
+    signinForm.onsubmit = signupForm.onsubmit = (e) => {
+      e.preventDefault();
+      window.location.href = 'welcome.html';
+    };
+  </script>
+</body>
+</html>

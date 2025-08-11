@@ -1,43 +1,16 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <style>
-
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @else
-            body {
-                font-family: 'Figtree', sans-serif;
-                line-height: 1.5;
-                margin: 0;
-                padding: 0;
-                background: #f8fafc;
-                color: #636b6f;
-            }
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-                height: 100vh;
-            }
-            .content {
-                text-align: center;
-            }
-            .title {
-                font-size: 84px;
-            }
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tokyo Night Shortener</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;

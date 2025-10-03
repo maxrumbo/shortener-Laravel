@@ -1,30 +1,18 @@
 
-# stel.link - URL Shorten by maxrumbo
+# URL Shortener
 
-Projek-projekan nya ini, stel.link ini cocok kalilah untuk kau yang mau potong link panjang jadi pendek, biar gak apa kali! Tinggal buka, tempel link, klik, langsung jadi. Gak usah banyak cakap, login pun bisa kalau mau fitur lebih.
+Proyek ini merupakan aplikasi web sederhana yang berfungsi untuk memendekkan (shorten) URL atau tautan panjang menjadi lebih singkat. Aplikasi ini dirancang agar mudah digunakan dan memiliki tampilan antarmuka yang sederhana.
 
-## Fitur Best Seller
-- Potong link panjang, secepat kau bilang "udah siap!"
-- Bikin alias sendiri, biar link kau makin gaya
-- Tampilan bersih, responsif, enak kali dipandang, HP/laptop pun masuk
-- Halaman cuma dua: landing sama login. Gak pake muter-muter!
+## Fitur Utama
+- Memendekkan URL secara instan
+- Mendukung pembuatan alias kustom untuk setiap link
+- Antarmuka pengguna yang minimalis dan responsif
 
-## Teknologi
-- Backend: Laravel, mantap jiwa
-- Frontend: HTML statis + Tailwind CSS (CDN), biar ringan
-
-## Cara Pakai
-1. Buka `landing.html`, tempel link kau, klik Shorten, siap!
-2. Mau login? Pakai `auth.html` aja, kalau perlu
-
-## Isi Folder
-- `public/landing.html` — Halaman utama, tempat potong link
-- `public/auth.html` — Halaman login, kalau mau gaya
-
-## Cara Mulai
-1. Clone repo ini dulu
-2. Jalankan di web server apa aja (XAMPP, Laravel, bebas lah)
-3. Buka `landing.html` di browser, langsung gas!
+## Petunjuk Penggunaan
+1. Buka file `auth.html` pada browser.
+2. Lakukan proses login atau pendaftaran akun jika diperlukan.
+3. Masukkan URL yang ingin dipendekkan pada kolom yang tersedia.
+4. Klik tombol untuk mendapatkan link pendek.
 
 ---
 
